@@ -1,12 +1,16 @@
-
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
 function App() {
-  return (
-    <div className="App">
-      <h1 className="text-4xl font-bold underline text-yellow-400 text-center">
-        Hello world!
-    </h1>
-    </div>
-  );
+    
+    return (
+        <div className=" bg-light dark:bg-dark h-screen">
+            <Routes>
+                <Route path="/" element={<Home></Home>} />
+                <Route path="/Login" element={<Login></Login>} />
+            </Routes>
+        </div>
+    );
 }
 
 export default App;
