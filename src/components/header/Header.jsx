@@ -23,7 +23,10 @@ function Header() {
 
     // Fonction pour basculer la visibilité du grand menu (mobile)
     const showBigMenu = () => {
-        setShowMenu((prevMenu) => (prevMenu === "hidden" ? "" : "hidden"));
+        setShowMenu((prevMenu) =>
+            prevMenu === "hidden" ? "" : "hidden"
+        );
+        document.body.classList.toggle("overflow-hidden");
     };
 
     // Effet initial pour initialiser les états

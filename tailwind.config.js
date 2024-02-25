@@ -5,11 +5,11 @@ module.exports = {
     theme: {
         extend: {
             colors: {
-                "orange-light": "#FFECD1",
+                "orange-light": "#FCD9B8",
                 "orange-dark": "#FB9300",
                 "green-dark": "#03A64A",
                 light: "#FAF9FB",
-                dark: "#0C0C0D",
+                dark: "#17181D",
             },
         },
     },
