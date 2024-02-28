@@ -23,9 +23,7 @@ function Header() {
 
     // Fonction pour basculer la visibilité du grand menu (mobile)
     const showBigMenu = () => {
-        setShowMenu((prevMenu) =>
-            prevMenu === "hidden" ? "" : "hidden"
-        );
+        setShowMenu((prevMenu) => (prevMenu === "hidden" ? "" : "hidden"));
         document.body.classList.toggle("overflow-hidden");
     };
 
@@ -60,7 +58,7 @@ function Header() {
             : "./assets/Dish Dash Logo - dark.png";
 
     return (
-        <header className="container mx-auto p-2 flex justify-around items-center text-dark dark:text-light bg-light dark:bg-dark max-md:justify-between">
+        <header className="xl:container mx-auto p-4 flex justify-between items-center text-dark dark:text-light bg-light dark:bg-dark max-md:justify-between">
             {/* Logo */}
             <div className="logo">
                 <img src={cheminLogo} alt="logo" width={50} />
@@ -75,7 +73,7 @@ function Header() {
             </div>
 
             {/* Grand menu (mobile) */}
-            <div className={`max-md:${showMenu}`}>
+            <div className={`max-md:${showMenu}  bg-light dark:bg-dark z-10`}>
                 <nav>
                     <ul className="flex items-center gap-8 font-bold relative max-md:flex-col max-md:absolute max-md:h-screen max-md:w-screen max-md:top-0 max-md:left-0 max-md:overflow-hidden max-md:bg-white max-md:dark:bg-black max-md:items-center justify-center">
                         {/* Bouton pour fermer le grand menu (mobile) */}
@@ -84,7 +82,11 @@ function Header() {
                                 className="text-2xl font-extrabold font-mono text-orange-dark "
                                 onClick={showBigMenu}
                             >
-                                X
+                                <img
+                                    src="./assets/x-mark.png"
+                                    className="size-6"
+                                    alt=""
+                                />
                             </span>
                         </div>
 

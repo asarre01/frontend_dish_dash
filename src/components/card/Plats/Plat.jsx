@@ -6,27 +6,27 @@ function Plat() {
         <div
             style={{
                 boxShadow:
-                    "rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px",
+                    "rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset",
             }}
-            className="max-w-64 rounded-md dark:bg-transparent bg-blend-multiply dark:text-light cursor-pointer m-4"
+            className="max-w-64 rounded-md dark:bg-transparent  dark:text-light cursor-pointer max-md:w-40"
         >
             <img
                 src="./assets/burger.png"
                 alt=""
-                className="object-cover object-center w-full rounded-t-md h-64"
+                className="object-cover object-center w-full rounded-t-md h-64 max-md:h-32"
             />
             <div className="flex flex-col justify-between p-4 space-y-8">
                 <div className="space-y-2">
-                    <h2 className="text-xl font-bold tracking">
-                        Hamburger Royal
+                    <h2 className="text-xl font-bold tracking max-md:text-sm">
+                        Hamburger La Reine
                     </h2>
                     <div className="flex items-center justify-between tracking-wide">
-                        <div className="font-bold">
-                            <span>3000</span>
+                        <div className="font-bold max-md:text-xs">
+                            <span>130 000</span>
                             <span className="text-orange-dark"> XOF</span>
                         </div>
                         <div>
-                            <IoAddCircle className="text-orange-dark text-5xl" />
+                            <IoAddCircle className="text-orange-dark text-5xl max-md:text-2xl" />
                         </div>
                     </div>
                 </div>

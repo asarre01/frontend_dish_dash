@@ -1,12 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { FaKitchenSet } from "react-icons/fa6";
 function Login() {
     return (
         <section className=" h-screen w-screen overflow-hidden grid grid-cols-2 max-md:block">
             <div className="max-md:hidden">
-                <Link to="/">Home</Link>
+                <Link to="/">
+                    <FaKitchenSet className=" m-4 text-4xl text-orange-dark" />
+                </Link>
             </div>
-            <div className=" p-12 flex flex-col justify-center items-center w-full h-full">
+            <div className=" p-12 flex flex-col justify-center items-center w-full h-full max-md:p-2">
                 <div className="w-5/6 border-b-2 border-orange-dark pb-16">
                     <div className=" w-full mb-12">
                         <h1 className="font-bold text-4xl dark:text-light">
