@@ -137,7 +137,7 @@ function Header() {
                                     )}
                                 </li>
                                 <li>
-                                    <Link to="/SignIn">S'incrire</Link>
+                                    <Link to="/Signin">S'incrire</Link>
                                 </li>
                                 <li>
                                     <Link to="/Login">S'identifier</Link>

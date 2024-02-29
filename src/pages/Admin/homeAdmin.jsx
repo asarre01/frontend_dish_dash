@@ -1,5 +1,5 @@
 import React from "react";
- import HeaderAdmin from "../../components/header/HeaderAdmin";
+import HeaderAdmin from "../../components/header/HeaderAdmin";
 function Home() {
     return (
         <section>

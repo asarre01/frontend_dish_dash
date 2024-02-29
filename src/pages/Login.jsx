@@ -1,65 +1,70 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaKitchenSet } from "react-icons/fa6";
+
 function Login() {
     return (
-        <section className=" h-screen w-screen overflow-hidden grid grid-cols-2 max-md:block">
-            <div className="max-md:hidden">
-                <Link to="/">
-                    <FaKitchenSet className=" m-4 text-4xl text-orange-dark" />
-                </Link>
-            </div>
-            <div className=" p-12 flex flex-col justify-center items-center w-full h-full max-md:p-2">
-                <div className="w-5/6 border-b-2 border-orange-dark pb-16">
-                    <div className=" w-full mb-12">
-                        <h1 className="font-bold text-4xl dark:text-light">
-                            S'identifier
-                        </h1>
-                    </div>
-                    <div className=" flex flex-col gap-8 w-full">
-                        <div className="space-y-1 text-lg w-full">
-                            <label
-                                for="email"
-                                className="block dark:text-light"
-                            >
-                                E-mail
+        <section className=" h-screen w-screen overflow-hidden flex justify-center  items-center">
+            <div className="flex flex-col min-w-xl p-6 border border-orange-dark rounded-md sm:p-10 bg-light dark:bg-dark dark:text-light text-dark max-md:border-none">
+                <div className="mb-8 text-left">
+                    <h1 className="my-3 text-5xl font-bold">S'identifier</h1>
+                    <p className="text-sm text-orange-light">
+                        Pour accéder à votre compte, veuillez vous connecter.
+                    </p>
+                </div>
+                <form novalidate="" action="" className="min-w-xl space-y-12">
+                    <div className="space-y-4">
+                        <div>
+                            <label for="email" className="block mb-2 text-sm">
+                                Email
                             </label>
                             <input
-                                type="text"
+                                type="email"
                                 name="email"
                                 id="email"
-                                placeholder="email"
-                                className="w-full px-4 py-3 rounded-md border-2 border-orange-dark bg-transparent dark:text-light focus:border-orange-dark  focus:outline-none active:border-orange-dark"
+                                placeholder="leroy@jenkins.com"
+                                className="w-full px-3 py-2 border rounded-md border-gray-700 bg-light dark:bg-light text-dark"
                             />
                         </div>
-                        <div className="space-y-1 text-lg w-full">
-                            <label
-                                for="email"
-                                className="block dark:text-light"
-                            >
-                                Mot de passe
-                            </label>
+                        <div>
+                            <div className="flex justify-between mb-2">
+                                <label for="password" className="text-sm">
+                                    Mot de passe
+                                </label>
+                                <Link
+                                    rel="noopener noreferrer"
+                                    href="#"
+                                    className="text-xs text-orange-light"
+                                >
+                                    Mot de passe oublié?
+                                </Link>
+                            </div>
                             <input
                                 type="password"
                                 name="password"
                                 id="password"
-                                placeholder="****************"
-                                className="w-full px-4 py-3 rounded-md border-2 border-orange-dark bg-transparent dark:text-light focus:border-orange-dark  focus:outline-none active:border-orange-dark"
+                                placeholder="*****"
+                                className="w-full px-3 py-2 border rounded-md border-gray-700 bg-light dark:bg-light text-dark"
                             />
                         </div>
-                        <button className="block w-full p-3 text-center font-bold uppercase rounded-lg text-light dark:text-dark bg-dark dark:bg-light">
-                            Connexion
-                        </button>
                     </div>
-                </div>
-                <div className="text-dark  dark:text-light py-4">
-                    <Link to="helpus" className="block text-center">
-                        Mot de passe oublié?
-                    </Link>
-                    <Link to="/Signin" className="block text-center">
-                        S'inscrire
-                    </Link>
-                </div>
+                    <div className="space-y-2">
+                        <div>
+                            <button
+                                type="button"
+                                className="w-full px-8 py-3 font-bold rounded-lg bg-orange-dark text-light"
+                            >
+                                Se connecter
+                            </button>
+                        </div>
+                        <p className="px-6 text-sm text-center text-orange-light">
+                            Vous n'avez pas encore de compte ?
+                            <Link to="/Signin" className=" text-orange-dark">
+                                S'inscrire
+                            </Link>
+                            .
+                        </p>
+                    </div>
+                </form>
             </div>
         </section>
     );

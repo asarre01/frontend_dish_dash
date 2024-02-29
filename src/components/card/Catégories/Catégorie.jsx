@@ -1,25 +1,36 @@
 import React from "react";
+import { IoIosArrowDroprightCircle } from "react-icons/io";
+import { IoIosArrowDropdown } from "react-icons/io";
 
-function Catégorie() {
+function Catégorie({ k, _id, setId }) {
+    const pwd = (n) => {
+        setId(n);
+    };
+    let bg = "text-dark";
+    let button = (
+        <IoIosArrowDroprightCircle
+            className={`mx-auto text-4xl text-orange-dark`}
+        />
+    );
+    if (_id === k) {
+        bg = "bg-orange-dark text-light";
+        button = (
+            <IoIosArrowDropdown className=" text-4xl text-light mx-auto" />
+        );
+    }
+
     return (
         <div
             style={{
                 boxShadow:
                     "rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset",
             }}
-            className="max-w-64 rounded-md dark:bg-transparent  dark:text-light cursor-pointer max-md:w-40 m-2"
+            className={` ${bg} mx-auto rounded-full pl-3 pr-2 py-1  dark:text-light hover:bg-orange-dark hover:text-light ease-linear transition-all duration-100 cursor-pointer`}
+            onClick={pwd.bind(null, _id)}
         >
-            <img
-                src="./assets/burger.png"
-                alt=""
-                className="object-cover object-center w-full rounded-t-md h-64 max-md:h-32"
-            />
-            <div className="flex flex-col justify-between p-4 space-y-8">
-                <div className="space-y-2">
-                    <h2 className="text-xl font-bold tracking max-md:text-sm text-center">
-                        Hamburger La Reine
-                    </h2>
-                </div>
+            <div className=" min-w-32 flex items-center justify-center">
+                <h1 className="w-full font-bold">Hamburger</h1>
+                {button}
             </div>
         </div>
     );
