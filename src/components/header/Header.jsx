@@ -6,8 +6,10 @@ import { useState, useEffect } from "react";
 import { MdOutlineWbSunny } from "react-icons/md";
 import { IoMoonOutline } from "react-icons/io5";
 import { FaHamburger } from "react-icons/fa";
+import { useAuth } from "../../Context/AuthContext";
 
 function Header() {
+    const { IsLogin, logout } = useAuth();
     // State pour la visibilité du menu utilisateur
     const [userMenu, setUserMenu] = useState("hidden");
 
@@ -136,15 +138,28 @@ function Header() {
                                         <IoMoonOutline className="ml-1" />
                                     )}
                                 </li>
-                                <li>
-                                    <Link to="/Signin">S'incrire</Link>
-                                </li>
-                                <li>
-                                    <Link to="/Login">S'identifier</Link>
-                                </li>
-                                <li>
-                                    <Link>Déconnexion</Link>
-                                </li>
+
+                                {IsLogin ? (
+                                    <li
+                                        onClick={() => {
+                                            logout();
+                                        }}
+                                    >
+                                        <Link>Déconnexion</Link>
+                                    </li>
+                                ) : (
+                                    <>
+                                        {" "}
+                                        <li>
+                                            <Link to="/auth/signin">S'incrire</Link>
+                                        </li>
+                                        <li>
+                                            <Link to="/auth/login">
+                                                S'identifier
+                                            </Link>
+                                        </li>
+                                    </>
+                                )}
                             </ul>
                         </li>
                     </ul>

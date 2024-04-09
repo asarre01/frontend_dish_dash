@@ -11,23 +11,23 @@ function Login() {
                         Pour accéder à votre compte, veuillez vous connecter.
                     </p>
                 </div>
-                <form novalidate="" action="" className="min-w-xl space-y-12">
+                <form  className="min-w-xl space-y-12">
                     <div className="space-y-4">
                         <div>
-                            <label for="email" className="block mb-2 text-sm">
+                            <label htmlFor="email" className="block mb-2 text-sm">
                                 Email
                             </label>
                             <input
                                 type="email"
                                 name="email"
                                 id="email"
-                                placeholder="leroy@jenkins.com"
+                                placeholder="Email - Tel"
                                 className="w-full px-3 py-2 border rounded-md border-gray-700 bg-light dark:bg-light text-dark"
                             />
                         </div>
                         <div>
                             <div className="flex justify-between mb-2">
-                                <label for="password" className="text-sm">
+                                <label htmlFor="password" className="text-sm">
                                     Mot de passe
                                 </label>
                                 <Link
