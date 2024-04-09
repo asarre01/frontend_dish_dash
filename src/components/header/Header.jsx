@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa";
 import { BiSolidDish } from "react-icons/bi";
 import { useState, useEffect } from "react";
@@ -9,12 +9,13 @@ import { FaHamburger } from "react-icons/fa";
 import { useAuth } from "../../Context/AuthContext";
 
 function Header() {
-    const { IsLogin, logout } = useAuth();
+    const { isLoggedIn, logout } = useAuth();
+    const location = useLocation();
     // State pour la visibilité du menu utilisateur
     const [userMenu, setUserMenu] = useState("hidden");
 
     // State pour la visibilité du grand menu (mobile)
-    const [showMenu, setShowMenu] = useState("hidden");
+    const [showMenu, setShowMenu] = useState(false);
 
     // Fonction pour basculer la visibilité du menu utilisateur
     const showUserMenu = () => {
@@ -24,16 +25,15 @@ function Header() {
     };
 
     // Fonction pour basculer la visibilité du grand menu (mobile)
-    const showBigMenu = () => {
-        setShowMenu((prevMenu) => (prevMenu === "hidden" ? "" : "hidden"));
-        document.body.classList.toggle("overflow-hidden");
+    const showBigMenuOpen = () => {
+        setShowMenu(true);
+        document.body.classList.add("overflow-hidden");
     };
 
-    // Effet initial pour initialiser les états
-    useEffect(() => {
-        setShowMenu("hidden");
-        setUserMenu("hidden");
-    }, []);
+    const showBigMenuClose = () => {
+        setShowMenu(false);
+        document.body.classList.remove("overflow-hidden");
+    };
 
     // State pour le thème (light/dark)
     const [theme, setTheme] = useState("light");
@@ -70,30 +70,37 @@ function Header() {
             <div>
                 <FaHamburger
                     className="text-orange-dark self-center text-2xl cursor-pointer md:hidden"
-                    onClick={showBigMenu}
+                    onClick={showBigMenuOpen}
                 />
             </div>
 
             {/* Grand menu (mobile) */}
-            <div className={`max-md:${showMenu}  bg-light dark:bg-dark z-10`}>
+            <div
+                className={`max-md:${
+                    showMenu ? "" : "hidden"
+                }  bg-light dark:bg-dark z-10`}
+            >
                 <nav>
                     <ul className="flex items-center gap-8 font-bold relative max-md:flex-col max-md:absolute max-md:h-screen max-md:w-screen max-md:top-0 max-md:left-0 max-md:overflow-hidden max-md:bg-white max-md:dark:bg-black max-md:items-center justify-center">
                         {/* Bouton pour fermer le grand menu (mobile) */}
                         <div className="md:hidden absolute top-4 right-4">
                             <span
                                 className="text-2xl font-extrabold font-mono text-orange-dark "
-                                onClick={showBigMenu}
+                                onClick={showBigMenuClose}
                             >
                                 <img
                                     src="./assets/x-mark.png"
                                     className="size-6"
                                     alt=""
+                                    onClick={showBigMenuClose}
                                 />
                             </span>
                         </div>
 
                         {/* Liens de navigation */}
-                        <li>
+                        <li className={
+                            location.pathname === '/' ? "text-orange-dark" : ""
+                        }>
                             <Link to="/">Accueil</Link>
                         </li>
                         <li>
@@ -139,7 +146,7 @@ function Header() {
                                     )}
                                 </li>
 
-                                {IsLogin ? (
+                                {isLoggedIn ? (
                                     <li
                                         onClick={() => {
                                             logout();
@@ -151,7 +158,9 @@ function Header() {
                                     <>
                                         {" "}
                                         <li>
-                                            <Link to="/auth/signin">S'incrire</Link>
+                                            <Link to="/auth/signin">
+                                                S'incrire
+                                            </Link>
                                         </li>
                                         <li>
                                             <Link to="/auth/login">

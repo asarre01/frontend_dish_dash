@@ -5,12 +5,12 @@ import ListeCategories from "../../components/card/Catégories/ListeCategories";
 import Hero from "../../components/header/Hero";
 import { useAuth } from "../../Context/AuthContext";
 function Home() {
-    const { isLoggin } = useAuth();
+    const { isLoggedIn } = useAuth();
     return (
         <div>
             <Header></Header>
             <Hero></Hero>
-            {isLoggin ? (<>
+            {isLoggedIn ? (<>
             <ListeCategories></ListeCategories>
             <ListePlats></ListePlats></>) : (<>Connectez vous</>)}
         </div>
