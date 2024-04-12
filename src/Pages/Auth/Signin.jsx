@@ -171,7 +171,7 @@ function Signin() {
                         Pour accéder à votre compte, veuillez vous connecter.
                     </p>
                 </div>
-                <Message show={show} msg={message} success={succes}></Message>
+                <Message show={show} success={succes} msg={message} setShow={setShow}/>
                 <form className="min-w-xl space-y-12">
                     <div className="space-y-4">
                         <div>

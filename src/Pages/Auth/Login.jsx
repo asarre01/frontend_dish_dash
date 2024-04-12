@@ -24,7 +24,11 @@ function Login() {
                 setSuccess(true);
                 setShow(true);
                 login(response.data);
-                navigate("/");
+                if (response.data.isAdmin) {
+                    navigate("/admin");
+                } else {
+                    navigate("/client");
+                }
                 setFormData({
                     nom: "",
                     prenom: "",
@@ -57,8 +61,8 @@ function Login() {
                         Pour accéder à votre compte, veuillez vous connecter.
                     </p>
                 </div>
-                <Message show={show} success={succes} msg={message} />
-                <form  className="min-w-xl space-y-12">
+                <Message show={show} success={succes} msg={message} setShow={setShow}/>
+                <form className="min-w-xl space-y-12">
                     <div className="space-y-4">
                         <div>
                             <label

@@ -10,9 +10,9 @@ function Home() {
         <div>
             <Header></Header>
             <Hero></Hero>
-            {isLoggedIn ? (<>
+
             <ListeCategories></ListeCategories>
-            <ListePlats></ListePlats></>) : (<>Connectez vous</>)}
+            <ListePlats></ListePlats>
         </div>
     );
 }

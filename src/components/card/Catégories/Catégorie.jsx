@@ -2,7 +2,7 @@ import React from "react";
 import { IoIosArrowDroprightCircle } from "react-icons/io";
 import { IoIosArrowDropdown } from "react-icons/io";
 
-function Catégorie({ k, _id, setId }) {
+function Catégorie({ k, _id, setId, categorie }) {
     const pwd = (n) => {
         setId(n);
     };
@@ -29,7 +29,7 @@ function Catégorie({ k, _id, setId }) {
             onClick={pwd.bind(null, _id)}
         >
             <div className=" min-w-32 flex items-center justify-center">
-                <h1 className="w-full font-bold">Hamburger</h1>
+                <h1 className="w-full font-bold">{categorie.nom}</h1>
                 {button}
             </div>
         </div>

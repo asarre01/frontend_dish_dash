@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
-
+import { Navigate } from "react-router-dom";
 // Créer un contexte pour stocker l'état de connexion
 const AuthContext = createContext();
 
@@ -14,13 +14,20 @@ const AuthProvider = ({ children }) => {
             // Vérifiez le token ici, par exemple, vous pouvez décoder le JWT et vérifier s'il est toujours valide
             setIsLoggedIn(true);
         }
-    }, []);
+    }, [setIsLoggedIn]);
 
     // Fonction de connexion
     const login = (data) => {
+        // Conversion de la chaîne JSON en objet JavaScript
+        const profil = { ...data.profil };
+
+        // Stockage des données dans le localStorage
         localStorage.setItem("token", data.token);
         localStorage.setItem("isAdmin", data.isAdmin);
-        localStorage.setItem("profil", { ...data.profil });
+        // Stockage de l'objet profil converti en chaîne JSON
+        localStorage.setItem("profil", JSON.stringify(profil));
+
+        // Mettre à jour l'état de connexion
         setIsLoggedIn(true);
     };
 
@@ -30,6 +37,7 @@ const AuthProvider = ({ children }) => {
         localStorage.removeItem("isAdmin");
         localStorage.removeItem("profil");
         setIsLoggedIn(false);
+        <Navigate to={"/"} />;
     };
 
     return (
