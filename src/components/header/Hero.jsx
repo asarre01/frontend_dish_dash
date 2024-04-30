@@ -12,8 +12,8 @@ function Hero() {
                 </div>
                 
                 <img
-                    src="./assets/hero.png"
-                    alt=" by Fakurian Design"
+                    src={process.env.PUBLIC_URL + "/assets/hero.png"}
+                    alt=" by Sarre Design"
                     className="absolute right-0 h-full w-full object-contain object-right  max-lg:object-center max-lg:relative lg:w-[70%]"
                 />
                 <div className="relative w-full ">

@@ -2,9 +2,10 @@ import React from "react";
 import { IoIosArrowDroprightCircle } from "react-icons/io";
 import { IoIosArrowDropdown } from "react-icons/io";
 
-function Catégorie({ k, _id, setId, categorie }) {
+function Catégorie({ k, _id, setId, categorie,setSelectCat  }) {
     const pwd = (n) => {
         setId(n);
+        setSelectCat(n)
     };
     let bg = "text-dark";
     let button = (

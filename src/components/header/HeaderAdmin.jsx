@@ -8,17 +8,18 @@ import { GrCycle } from "react-icons/gr";
 import { IoHome } from "react-icons/io5";
 import { FaShoppingBasket } from "react-icons/fa";
 import { GiPresent } from "react-icons/gi";
+import { PiCookingPotFill } from "react-icons/pi";
 import { useAuth } from "../../Context/AuthContext";
 const HeaderAdmin = () => {
     const { logout } = useAuth();
     const menus = [
         { name: "Accueil", link: "/admin/", icon: IoHome },
         { name: "Gestion Catégories", link: "/admin/categorie", icon: ImBooks },
-        // {
-        //     name: "Gestion Abonnements",
-        //     link: "/admin/abonnement",
-        //     icon: GrCycle,
-        // },
+        {
+            name: "Gestion Plats",
+            link: "/admin/plat",
+            icon: PiCookingPotFill,
+        },
         // {
         //     name: "Gestion Achats Public",
         //     link: "/admin/achatPublic",

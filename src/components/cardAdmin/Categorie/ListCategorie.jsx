@@ -15,7 +15,6 @@ const ListCategorie = ({ searchQuery }) => {
         const fetchData = async () => {
             try {
                 const response = await getAllCategories();
-                console.log(response);
                 setData(response);
             } catch (error) {
                 console.error(

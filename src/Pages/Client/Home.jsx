@@ -1,18 +1,14 @@
-import React from "react";
-import Header from "../../components/header/Header";
+import React, { useState } from "react";
 import ListePlats from "../../components/card/Plats/ListePlats";
 import ListeCategories from "../../components/card/Catégories/ListeCategories";
 import Hero from "../../components/header/Hero";
-import { useAuth } from "../../Context/AuthContext";
 function Home() {
-    const { isLoggedIn } = useAuth();
+    const [selectCat, setSelectCat] = useState(null);
     return (
         <div>
-            <Header></Header>
             <Hero></Hero>
-
-            <ListeCategories></ListeCategories>
-            <ListePlats></ListePlats>
+            <ListeCategories setSelectCat={setSelectCat}></ListeCategories>
+            <ListePlats selectCat={selectCat}></ListePlats>
         </div>
     );
 }

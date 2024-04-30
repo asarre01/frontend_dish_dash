@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Catégorie from "./Catégorie";
 import { getAllCategories } from "../../../Services/admin/CategorieService";
 
-function ListeCategories() {
+function ListeCategories({setSelectCat}) {
     const [data, setData] = useState([]);
     const [id, setId] = useState();
     useEffect(() => {
@@ -12,6 +12,7 @@ function ListeCategories() {
                 setData(response);
                 if (response.length > 0) {
                     setId(response[0]._id);
+                    setSelectCat(response[0]._id)
                 }
             } catch (error) {
                 console.error(
@@ -22,7 +23,7 @@ function ListeCategories() {
         };
 
         fetchData();
-    }, []);
+    }, [setSelectCat]);
 
     return (
         <section className=" py-8 container mx-auto dark:text-light border-t border-orange-dark">
@@ -33,7 +34,7 @@ function ListeCategories() {
             </div>
             <div className=" flex flex-wrap gap-4 items-center ">
                 {data.map((categorie) => (
-                    <Catégorie key={categorie._id} categorie={categorie} k={id} _id={categorie._id} setId={setId} />
+                    <Catégorie key={categorie._id} categorie={categorie} k={id} _id={categorie._id} setId={setId} setSelectCat={setSelectCat} />
                 ))}
             </div>
         </section>

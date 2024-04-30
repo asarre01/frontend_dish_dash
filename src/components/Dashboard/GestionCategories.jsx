@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import NavBar from "../header/NavBar";
+import NavBarCat from "../header/NavBarCat";
 import ListCategorie from "../cardAdmin/Categorie/ListCategorie";
 
 function GestionCategories() {
@@ -7,7 +7,7 @@ function GestionCategories() {
 
     return (
         <section className="w-full min-h-screen container mx-auto lg:px-24 py-12">
-            <NavBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+            <NavBarCat searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
             <ListCategorie searchQuery={searchQuery} />
         </section>
     );

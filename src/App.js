@@ -1,5 +1,4 @@
 import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
-import Home from "./Pages/Client/Home";
 // import Login from "./Pages/Login";
 // import Signin from "./Pages/Signin";
 import { AuthProvider } from "./Context/AuthContext";
@@ -16,7 +15,7 @@ function App() {
                 <Router>
                     <Routes>
                         <Route path="/" element={<WhoAmI></WhoAmI>} />
-                        <Route path="/public" element={<Home></Home>} />
+                        <Route path="/public/*" element={  <ClientRouter />} />
                         <Route
                             path="/client/*"
                             element={

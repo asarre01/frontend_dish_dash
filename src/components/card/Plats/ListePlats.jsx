@@ -1,17 +1,34 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Plat from "./Plat";
+import { getPlatsByCategorie } from "../../../Services/admin/PlatService";
 
-function ListePlats() {
+function ListePlats({ selectCat }) {
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                if (selectCat !== null) {
+                    const response = await getPlatsByCategorie(selectCat);
+                    console.log(selectCat);
+                    setData(response);
+                    console.log(response);
+                }
+            } catch (error) {
+                console.error(
+                    "Une erreur s'est produite lors de la récupération des catégories :",
+                    error
+                );
+            }
+        };
+
+        fetchData();
+    }, [selectCat]);
     return (
         <div className=" max-md:p-2 p-4 grid grid-cols-4 gap-4 max-xs:grid-cols-1 max-sm:grid-cols-2 max-md:grid-cols-3 max-lg:grid-cols-3  place-items-center xl:container mx-auto ">
-            <Plat key={1}></Plat>
-            <Plat key={12}></Plat>
-            <Plat key={12}></Plat>
-            <Plat key={13}></Plat>
-            <Plat key={14}></Plat>
-            <Plat key={15}></Plat>
-            <Plat key={16}></Plat>
-            <Plat key={17}></Plat>
+            {data.map((item, i) => (
+                <Plat key={item._id} item={item} />
+            ))}
         </div>
     );
 }

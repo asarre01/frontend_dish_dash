@@ -27,12 +27,12 @@ function Header() {
     // Fonction pour basculer la visibilité du grand menu (mobile)
     const showBigMenuOpen = () => {
         setShowMenu(true);
-        document.body.classList.add("overflow-hidden");
+        document.body.classList.toggle("overflow-hidden");
     };
 
     const showBigMenuClose = () => {
         setShowMenu(false);
-        document.body.classList.remove("overflow-hidden");
+        document.body.classList.toggle("overflow-hidden");
     };
 
     // State pour le thème (light/dark)
@@ -56,14 +56,14 @@ function Header() {
     // Chemin du logo en fonction du thème actuel
     const cheminLogo =
         theme === "dark"
-            ? "./assets/Dish Dash Logo - white.png"
-            : "./assets/Dish Dash Logo - dark.png";
+            ? "/assets/Dish Dash Logo - white.png"
+            : "/assets/Dish Dash Logo - dark.png";
 
     return (
         <header className="xl:container mx-auto p-4 flex justify-between items-center text-dark dark:text-light bg-light dark:bg-dark max-md:justify-between">
             {/* Logo */}
             <div className="logo">
-                <img src={cheminLogo} alt="logo" width={50} />
+                <img src={process.env.PUBLIC_URL + cheminLogo} alt="logo" width={50} />
             </div>
 
             {/* Bouton hamburger pour le grand menu (mobile) */}
@@ -76,7 +76,7 @@ function Header() {
 
             {/* Grand menu (mobile) */}
             <div
-                className={`max-md:${
+                className={`${
                     showMenu ? "" : "hidden"
                 }  bg-light dark:bg-dark z-10`}
             >
@@ -92,15 +92,18 @@ function Header() {
                                     src="./assets/x-mark.png"
                                     className="size-6"
                                     alt=""
-                                    onClick={showBigMenuClose}
                                 />
                             </span>
                         </div>
 
                         {/* Liens de navigation */}
-                        <li className={
-                            location.pathname === '/' ? "text-orange-dark" : ""
-                        }>
+                        <li
+                            className={
+                                location.pathname === "/"
+                                    ? "text-orange-dark"
+                                    : ""
+                            }
+                        >
                             <Link to="/">Accueil</Link>
                         </li>
                         <li>
@@ -112,7 +115,7 @@ function Header() {
 
                         {/* Icône de panier */}
                         <li className="text-orange-dark text-3xl">
-                            <Link to="/panier" className="flex items-center">
+                            <Link to="/public/panier" className="flex items-center">
                                 <BiSolidDish />
                                 <span className="ml-2 md:hidden text-dark dark:text-light text-lg">
                                     Mon dish
