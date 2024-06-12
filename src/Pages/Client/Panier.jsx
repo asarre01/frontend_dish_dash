@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FaPlus, FaMinus } from "react-icons/fa";
+import { ajouterCommande } from "../../Services/client/CommandeService";
 
 function Panier() {
     const [panier, setPanier] = useState(
@@ -77,15 +78,23 @@ function Panier() {
         setShowModal(false);
     };
 
-    // Fonction pour traiter la soumission du formulaire
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // Ajoutez ici la logique pour traiter les données du formulaire
-        // Par exemple, vous pouvez les envoyer à votre serveur
-        // et afficher un message de confirmation
-        console.log("Formulaire soumis avec succès !");
+// Fonction pour traiter la soumission du formulaire
+const handleSubmit = async () => {
+    
+    try {
+        const data = {
+            ...formData, // Ajoutez les données du formulaire
+            items: panier // Ajoutez les éléments du panier
+        }
+        console.log(data);
+        // Appel à la fonction ajouterCommande avec les données du formulaire et du panier
+        const response = await ajouterCommande(data);
         closeModal(); // Ferme le modal après la soumission
-    };
+    } catch (error) {
+        console.error("Erreur lors de l'ajout de la commande :", error);
+        // Gérer l'erreur, par exemple, afficher un message à l'utilisateur
+    }
+};
 
     return (
         <section className="py-4 container mx-auto px-6">
@@ -185,7 +194,7 @@ function Panier() {
                             />
                         </button>
                         <h2 className="text-2xl font-bold mb-4">Commander</h2>
-                        <form onSubmit={handleSubmit}>
+                        <form >
                             <div className="mb-4">
                                 <label
                                     htmlFor="table"
@@ -265,7 +274,7 @@ function Panier() {
 
                             <div className="w-full">
                                 <button
-                                    type="submit"
+                                    onClick={handleSubmit}
                                     className="inline-block px-4 py-2 bg-green-500 text-white font-bold rounded-md w-full"
                                 >
                                     Commander
